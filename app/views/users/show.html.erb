@@ -1,0 +1,13 @@
+
+<div class="container">
+	<p class="message"><%= notice %></p>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= render "users/list", user: @user %>
+			<%= render "books/new", book: @book %>
+		</div>
+		<div class="col-xs-9">
+			<%= render "books/list", books: @books %>
+		</div>
+	</div>
+</div>

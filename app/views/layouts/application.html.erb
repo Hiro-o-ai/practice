@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,42 @@
   </head>
 
   <body>
+    <div class="header" id="header">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          <h3>Bookers</h3>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to user_path(current_user.id), class: "my-bt" do%><i class="glyphicon glyphicon-home"></i> Home<% end %></li>
+              <li><%= link_to users_path, class: "my-bt" do%><i class="glyphicon glyphicon-user"></i> users<% end %></li>
+              <li><%= link_to books_path, class: "my-bt" do%><i class="glyphicon glyphicon-book"></i> books<% end %></li>
+             <li><%= link_to destroy_user_session_path, method: :delete, class: "my-bt" do%><i class="glyphicon glyphicon-log-out"></i> logout<% end %></li>
+            <% else %>
+             <li><%= link_to root_path, class: "my-bt" do%><i class="glyphicon glyphicon-home"></i> Home<% end %></li>
+              <li><%= link_to about_home_path, class: "my-bt" do%><i class="glyphicon glyphicon-link"></i> about<% end %></li>
+              <li><%= link_to new_user_registration_path, class: "my-bt" do%><i class="glyphicon glyphicon-edit"></i> sign up<% end %></li>
+              <li><%= link_to new_user_session_path, class: "my-bt" do%><i class="glyphicon glyphicon-log-in"></i> login<% end %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    
+
     <%= yield %>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-right">CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+  </footer>
+
   </body>
 </html>

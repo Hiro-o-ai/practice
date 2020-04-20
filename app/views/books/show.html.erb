@@ -1,0 +1,46 @@
+<div class="container">
+	<p class="message"><%= notice %></p>
+	<div class="row">
+		<div class="col-xs-3">
+			<%= render "users/list", user: @user %>
+			<%= render "books/new", book: @book1 %>
+		</div>
+		<div class="col-xs-9">
+			<h3>Book detail</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<%= link_to user_path(@book.user.id) do %>
+								<%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+							<% end %>
+							<br>
+							<%= link_to user_path(@book.user.id) do %>
+								<% @book.user.name %>
+							<% end %>
+						</td>
+						<td>
+							<%=link_to book_path(@book.id) do %>
+								<%= @book.title %>
+							<% end %>
+						</td>
+						<td><%= @book.body %></td>
+						<% if @book.user == current_user %>
+							<td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-primary btn-sm" %></td>
+							<td><%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn  btn-success btn-sm" %></td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

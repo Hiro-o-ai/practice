@@ -1,0 +1,21 @@
+<div class="container">
+	<p class="message"><%= notice %></p>
+	<div class="row">
+		<div class=col-md-3></div>
+		<div class=col-md-5>
+			<h2 class="head-line">welcome to<br><span class="glyphicon glyphicon-book"></span>Bookers !!</h2>
+			<p class="line">In <span class="glyphicon glyphicon-book"></span><b>Bookers</b></p>
+			<p class="line">you can share and exchange your opinions , inpressions , and emotions</p>
+			<p class="line">about various books!</p>
+
+			<% if user_signed_in? %>
+				<%= link_to "Log in", user_path(current_user.id), class: "btn btn-block btn-primary" %>
+				<%= link_to user_path(current_user.id), class: "btn btn-block btn-success" do%>Sign up<% end %>
+			<% else %>
+				<%= link_to "Log in", new_user_session_path, class: "btn btn-block btn-primary" %>
+				<%= link_to new_user_registration_path, class: "btn btn-block btn-success" do%>Sign up<% end %>
+			<% end %>
+		</div>
+		<div class=col-md-4></div>
+	</div>
+</div>

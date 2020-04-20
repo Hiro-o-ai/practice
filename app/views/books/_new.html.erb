@@ -1,0 +1,14 @@
+		<h3><b>New book</b></h3>
+		<%= form_for(book) do |f| %>
+		<%= render "books/error", book: @book %>
+		<h5>Title</h5>
+		<%= f.text_field :title, class:"form-control"  %>
+
+		<h5>Opinion</h5>
+		<%= f.text_area :body, class:"form-control" %>
+
+		<br>
+		<%= f.submit "Create Book", class:"btn  btn-block btn-primary" %>
+
+		<% end %>
+		
