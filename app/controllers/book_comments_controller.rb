@@ -9,7 +9,7 @@ class BookCommentsController < ApplicationController
       @bookn = Book.new
       @user = @book.user
       @book_comment = @book.book_comments
-      render :template => 'books/show'
+      render '/books/show'
     end
   end
 

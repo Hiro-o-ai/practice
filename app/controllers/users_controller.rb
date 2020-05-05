@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   before_action :correct_user, only: [:edit, :update]
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @bookn = Book.new
     @books = @user.books
   end
@@ -27,16 +27,18 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user  = User.find(params[:id])
+    user  = User.find(params[:id])
+    @users = user.following
   end
 
   def followers
-    @user  = User.find(params[:id])
+    user  = User.find(params[:id])
+    @users = user.followers
   end
 
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
   def correct_user
     @user = User.find(params[:id])
