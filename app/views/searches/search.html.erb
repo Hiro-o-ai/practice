@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @user_or_book == "1" %>
+        
+        <h3>Users search for ' <%= "#{@search}" %> '</h3>
+        <%= render "users/index", users: @users %>
+
+      <% elsif @user_or_book == "2" %>
+        
+        <h3>Boos search for ' <%= "#{@search}" %> '</h3>
+        <%= render "books/list", books: @books %>
+       <% end %> 
+    </div>
+  </div>
+</div>

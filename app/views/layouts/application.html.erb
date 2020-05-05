@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <header>
     <div class="header" id="header">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -32,9 +33,26 @@
         </div>
       </nav>
     </div>
-
-    
-
+    <div class="search">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6">
+            <% if user_signed_in? %>
+              <%= form_tag(search_path, :method => "get" ) do %>
+                <%= select_tag(:option, options_for_select([["user", "1"],["book","2"]])) %>
+                <%= select_tag(:choice, options_for_select([["完全一致", "1"],["前方一致","2"],["後方一致","3"],["部分一致","4"]])) %>
+                <%= text_field_tag :search %>
+                <%= submit_tag "Search", :name => nil %>
+              <% end %>
+            <% else %>
+            <% end %>
+          </div>
+          <div class="col-xs-3"></div>
+        </div>
+      </div>
+    </div>
+    </header>
     <%= yield %>
 
     <footer>
