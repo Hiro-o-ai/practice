@@ -17,13 +17,32 @@
 						<td>introduction</td>
 						<td> <%= user.introduction %></td>
 					</tr>
+					<tr>
+						<td>フォロー数</td>
+						<td><%= link_to following_user_path(user) do%>
+								<%= user.following.count %>
+							<% end %>
+						</td>
+					</tr>
+					<tr>
+						<td>フォロワー数</td>
+						<td><%= link_to followers_user_path(user) do%>
+								<%= user.followers.count %>
+							<% end %>			
+						</td>
+					</tr>
 				</tbody>
 			</table>
 			<% if user != current_user %>
-				<%=link_to user_path(current_user.id),class: "btn btn-block btn-default" do%><i class="glyphicon glyphicon-wrench"></i><% end %>
+				<% if current_user.following?(user) %>
+    			<%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: "btn btn-block btn-success" %>
+  			<% else %>
+    			<%= link_to 'フォローする', follow_path(user.id), method: :POST ,class: "btn btn-block btn-success" %>
+  			<% end %>
 			<% else %>
 				<%= link_to edit_user_path(user), class: "btn btn-block btn-default" do%><i class="glyphicon glyphicon-wrench"></i><% end %>
 			<% end %>
+
 
 
 
