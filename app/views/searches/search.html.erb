@@ -9,8 +9,26 @@
       <% elsif @user_or_book == "2" %>
         
         <h3>Boos search for ' <%= "#{@search}" %> '</h3>
-        <%= render "books/list", books: @books %>
-       <% end %> 
+        <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+          <tbody>
+            <tr class="book_<%= book.id %>">
+              <%= render "books/list", book: book %>
+            </tr>
+          </tbody>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

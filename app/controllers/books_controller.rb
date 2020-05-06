@@ -30,7 +30,6 @@ class BooksController < ApplicationController
 		@bookn = Book.new
 		@user = @book.user
     @comment = BookComment.new
-    @book_comment = @book.book_comments
 	end
 
 	def edit

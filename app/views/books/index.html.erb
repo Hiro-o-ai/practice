@@ -8,8 +8,24 @@
 		</div>
 		<div class="col-xs-9">
 			<h3>Books</h3>
-			<%= render "books/list", books: @books %>
-			
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<% @books.each do |book| %>
+					<tbody>
+						<tr class="book_<%= book.id %>">
+							<%= render "books/list", book: book %>
+						</tr>
+					</tbody>
+				<% end %>
+			</table>	
 		</div>
 	</div>
 </div>
