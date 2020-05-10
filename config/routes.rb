@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   resources :rooms, only: [:create,:show] do
     resources :chats, only: [:create]
   end
-  
 end

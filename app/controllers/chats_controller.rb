@@ -5,6 +5,7 @@ class ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @chat.room_id = @room.id
     @chat.save
+    #ActionCable.server.broadcast 'room_channel', room: @room.template
   end
 
 
