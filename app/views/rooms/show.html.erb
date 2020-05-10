@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h3><%= @room.name %></h3>
+
+      <h4>参加者</h4>
+      <% @entries.each do |e| %>
+        <%= link_to e.user.name, user_path(e.user_id) %>
+      <% end %>
+
+      <h1>Chat room</h1>
+      
+      <%= form_with(model: [@room, @chat]) do |f| %>
+        <%= f.text_area :message, rows:"5", class:"form-control", placeholder:"メッセージをここに" %>
+        <br>
+        <%= f.submit "送信する", class:"btn  btn-lg pull-right btn-primary" %>
+      <% end %>
+
+      <table id="js-table-chat" class="table">
+
+        <%= render "rooms/chatlist", room: @room %>
+
+      </table>
+
+        <!--   <form>
+        <label>Say something:</label><br>
+        <input type="text" id="chat-input" data-behavior="room_speaker">
+        <div id="direct_messages" data-room_id="<%= @room.id %>">
+        </form> -->
+        <%#= render @direct_messages %>
+      </div>
+    </div>
+  </div>
+</div>

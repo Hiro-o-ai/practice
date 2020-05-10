@@ -1,0 +1,22 @@
+<thead>
+  <tr>
+    <th>name</th>
+    <th>comment</th>
+    <th>time</th>
+  </tr>
+</thead>
+<tbody>
+  <% room.chats.each do |chat| %>
+    <tr class="chat-<%= chat.id %>">
+      <td>
+        <%= chat.user.name %>
+      </td>
+      <td>
+        <%= chat.message %>
+      </td>
+      <td>
+        <%= chat.created_at.strftime("%Y/%m/%d") %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
